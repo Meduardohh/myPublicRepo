@@ -443,7 +443,7 @@ Az NBA 2003-as évében kötött szerződéseiről tartalmaz információt. A j�
 //-1.feladat
 function payRoll(array) {
     let fullPay = {};
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; ++i) {
         fullPay[i] = {
             name: array[i][1],
             pay: array[i][2] * array[i][3],
@@ -460,7 +460,7 @@ console.log(payRoll(szerzodesek))
 function maxPay(array) {
     let max = 0;
     let player = {}
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; ++i) {
         if (array[i][2] > max) {
             player.name = array[i][1]
             player.maxPayment = array[i][2];
@@ -479,7 +479,7 @@ function teamMax(array) {
     let teamMaxes = {}
     let spent = 0;
     let d = -1;
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; ++i) {
         if (currentTeam == array[i][0]) {
             spent += array[i][2]
 
@@ -509,7 +509,7 @@ function diff(array) {
     let currentTeam = array[0][0];
     let teamMinMax = {};
     let d = -1;
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; ++i) {
         if (currentTeam == array[i][0]) {
             if (array[i][2] > max) max = array[i][2];
 
@@ -535,7 +535,7 @@ function diff(array) {
     let maxDiff = 0;
     let greedyFucks = {}
     let team;
-    for (let i = 0; i < size; i++) {
+    for (let i = 0; i < size; ++i) {
         difference = teamMinMax[i].max - teamMinMax[i].min
         if (difference > maxDiff) {
             maxDiff = difference
@@ -560,7 +560,7 @@ function lowestAverage(array) {
     let num = 0;
     let paymentObject = {}
     let d = -1
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; ++i) {
         if (array[i][0] == currentTeam) {
             payment += array[i][2]
             num++
@@ -594,7 +594,7 @@ function highestSalaryPlayer(array) {
     let salaries = {}
     let d = -1;
 
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; ++i) {
         if (array[i][0] == currentTeam) {
             if (array[i][2] > biggestSalary) {
                 biggestSalary = array[i][2];
@@ -623,7 +623,7 @@ console.log(highestSalaryPlayer(szerzodesek))
 
 function gross(array) {
     let sum = 0;
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; ++i) {
         sum += array[i][2]
     }
     return Math.round(sum / array.length)
@@ -637,7 +637,7 @@ console.log(`Az átlag fizetés az NBA-nél: ${gross(szerzodesek)}`)
 function aboveAverage(array) {
 
     let sum = 0;
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; ++i) {
         sum += array[i][2]
     }
     sum = sum / array.length
@@ -646,7 +646,7 @@ function aboveAverage(array) {
     let currentTeam = array[0][0]
     let aboveA = {}
     let d = -1
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; ++i) {
         if (array[i][0] == currentTeam) {
             if (array[i][2] > sum) {
                 counter++
