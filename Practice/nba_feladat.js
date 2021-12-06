@@ -486,7 +486,7 @@ function teamMax(array) {
         }
         else {
 
-            teamMaxes[++d] = {                          //csak flexből használtam preinkrementációs operátort.
+            teamMaxes[++d] = {                          
                 team: array[i - 1][0],
                 yearlypaid: spent
             }
