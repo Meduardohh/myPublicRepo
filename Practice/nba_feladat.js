@@ -528,28 +528,154 @@ function diff(array) {
             currentTeam = array[i][0]
         }
     }
-    
 
-        let size = Object.keys(teamMinMax).length
-        let difference = 0;
-        let maxDiff = 0;
-        let greedyFucks = {}
-        let team;
-        for (let i = 0; i < size; i++) {
-            difference = teamMinMax[i].max - teamMinMax[i].min
-            if (difference > maxDiff) {
-                maxDiff = difference
-                team = teamMinMax[i].team
-            }
+
+    let size = Object.keys(teamMinMax).length
+    let difference = 0;
+    let maxDiff = 0;
+    let greedyFucks = {}
+    let team;
+    for (let i = 0; i < size; i++) {
+        difference = teamMinMax[i].max - teamMinMax[i].min
+        if (difference > maxDiff) {
+            maxDiff = difference
+            team = teamMinMax[i].team
         }
-        greedyFucks = {
-            team: team,
-            biggestDif: maxDiff
-        }
-        return greedyFucks
     }
-    
+    greedyFucks = {
+        team: team,
+        biggestDif: maxDiff
+    }
+    return greedyFucks
+}
+
 
 console.log(diff(szerzodesek))
 
 //-5. feladat
+
+function lowestAverage(array) {
+    let currentTeam = array[0][0]
+    let payment = 0;
+    let num = 0;
+    let paymentObject = {}
+    let d = -1
+    for (let i = 0; i < array.length; i++) {
+        if (array[i][0] == currentTeam) {
+            payment += array[i][2]
+            num++
+        }
+        else {
+            paymentObject[++d] = {
+                team: array[i - 1][0],
+                averagePay: Math.round(payment / num)
+            }
+            num = 0;
+            payment = 0;
+            currentTeam = array[i][0]
+        }
+    }
+    let size = Object.keys(paymentObject).length
+    let smallest = Infinity;
+    for (let i = 0; i < size; i++) {
+        if (smallest > paymentObject[i].averagePay) smallest = paymentObject[i].averagePay
+    }
+    return smallest;
+}
+
+console.log(lowestAverage(szerzodesek))
+
+
+//-6.feladat
+
+function highestSalaryPlayer(array) {
+    let currentTeam = array[0][0]
+    let biggestSalary = 0
+    let salaries = {}
+    let d = -1;
+
+    for (let i = 0; i < array.length; i++) {
+        if (array[i][0] == currentTeam) {
+            if (array[i][2] > biggestSalary) {
+                biggestSalary = array[i][2];
+
+            }
+
+        }
+        else {
+            salaries[++d] = {
+                team: array[i - 1][0],
+                player: array[i - 1][1],
+                salary: biggestSalary
+
+            }
+            currentTeam = array[i][0]
+
+            biggestSalary = 0;
+        }
+    }
+    return salaries;
+}
+console.log(highestSalaryPlayer(szerzodesek))
+
+
+//-7. feladat
+
+function gross(array) {
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        sum += array[i][2]
+    }
+    return Math.round(sum / array.length)
+
+
+}
+
+console.log(`Az átlag fizetés az NBA-nél: ${gross(szerzodesek)}`)
+
+//-8. feladat
+function aboveAverage(array) {
+
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        sum += array[i][2]
+    }
+    sum = sum / array.length
+
+    let counter = 0;
+    let currentTeam = array[0][0]
+    let aboveA = {}
+    let d = -1
+    for (let i = 0; i < array.length; i++) {
+        if (array[i][0] == currentTeam) {
+            if (array[i][2] > sum) {
+                counter++
+            }
+        }
+
+
+        else {
+            aboveA[++d] = {
+                team: currentTeam,
+                countOfPlayersAboveAveragePay: counter
+            }
+            counter = 0;
+            currentTeam = array[i][0]
+        }
+    }
+    return aboveA
+
+}
+
+console.log(aboveAverage(szerzodesek))
+
+
+//-9. feladat
+
+
+function sortDescending(array) {
+    return newArray = array.sort((a, b) => (b[2] - a[2]))
+
+}
+
+console.log(sortDescending(szerzodesek))
