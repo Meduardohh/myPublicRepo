@@ -12,7 +12,7 @@
 // function stringReverse(string){
 //     if(typeof string !=='string'){
 //       return  alert("Ne buzgálkodjál. Mindig buzgálkodsz")
-        
+
 //     }
 //     else{
 //   let reverseString=  string.split("").reverse().join("")
@@ -54,4 +54,26 @@
 // }
 // subtract(10,15)
 
+let input = prompt("Van kuponod bazze?")
+let termek = prompt("Mennyi volt a termék?")
 
+let kuponok = [
+    {
+        kupon: "XMAS10",
+        kedvezmeny: 10
+    },
+    {
+        kupon: "SANTA1000",
+        kedvezmeny: 1000
+    }
+]
+
+function kupon(input, termek) {
+    let ifNot = "Nincs ilyen kupon baszdmeg"       
+        if (input == kuponok[0].kupon) return termek - (termek / 100 * kuponok[0].kedvezmeny)
+        else if (input == kuponok[1].kupon) return termek - kuponok[1].kedvezmeny
+        else return ifNot
+   
+}
+
+console.log(kupon(input, termek))
