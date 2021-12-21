@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="divID"></div>
+    <div class="ezClass"></div>
+    <div id="divID2">
+        <p class="pID"></p>
+        <p class="pID"></p>
+        <p class="pID"></p>
+        <p class="pID"></p>
+        <p class="pID"></p>
+    </div>
+    <script>
+        let divek=document.getElementsByClassName(".ezClass")
+        console.log(divek)
+        let divId=document.querySelector("#divID")
+        console.log(divId)
+        let pInDiv=document.querySelector("#divID2")
+        console.log(pInDiv)
+        let divp=pInDiv.querySelector("p")
+        console.log(divp)
+        let nc=document.querySelector("#divID2")
+        lastchild=nc.lastChild
+        console.log(lastchild)
+
+        divek.id="asd"
+        console.log(divek.id)
+  
+    </script>
+</body>
+</html>
