@@ -32,6 +32,7 @@
 <body>
     <div>
         <button type="submit" id="round">Who dies next?</button>
+        <button type="submit" id="save">Save people who already participated</button>
     </div>
     <div id="dead">
         <h6>The most unlucky person this time is:</h6>
@@ -45,16 +46,13 @@
             "Ádám Szőnyi",
             "Ákos Szőke",
             "Arpad Toth",
-            "Attila Kiss",
             "Dávid Balázs",
             "Dávid Farkas",
-            "Dávid Ottó",
             "Dávid Végh",
             "Domokos Csaba",
             "Dzsenifer Farnadi",
             "Emese Józsa",
             "Eszter Urbán",
-            "Gergely Balogh",
             "Gergő Iglódi",
             "Gréta Fehértói",
             "Laszlo Pista",
@@ -66,7 +64,7 @@
             "Szabolcs Derzsi",
             "Tamás Kiss",
             "Tamás Bittera",
-            "Tamás Kecskés"]
+            "Tamás Kecskés"];
 
         let wasToday = []
 
@@ -83,14 +81,20 @@
 
         document.querySelector("#round").addEventListener("click", () => {
 
-            if (wasToday.length === ombrek.length) alert("Ma már mindenki volt. Hogy jutottál el ide?")
+            if (wasToday.length === ombrek.length) return alert("Ma már mindenki volt. Hogy jutottál el ide?")
             giveRandom(ombrek[random])
 
             wasToday.push(ombrek[random])
             document.querySelector("h1").innerText = ombrek[random];
+            
         }
-
         )
+
+        document.querySelector("#save").addEventListener("click",()=>{
+            window.localStorage.setItem("Already dead",JSON.stringify(wasToday));
+        })
+
+
 
 
 
