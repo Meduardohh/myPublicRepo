@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who get's to be the lucky one?</title>
+    <style>
+        body {
+            background-color: black;
+            color: beige;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 7rem;
+        }
+
+        button {
+            background-color: bisque;
+            height: 10em;
+            width: 15em;
+            position: absolute;
+            bottom: 10%;
+            left: 45%
+        }
+
+        h6 {
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button type="submit" id="round">Who dies next?</button>
+    </div>
+    <div id="dead">
+        <h6>The most unlucky person this time is:</h6>
+        <h1></h1>
+    </div>
+
+
+    <script>
+        let ombrek = [
+            "Ádám Oláh",
+            "Ádám Szőnyi",
+            "Ákos Szőke",
+            "Arpad Toth",
+            "Attila Kiss",
+            "Dávid Balázs",
+            "Dávid Farkas",
+            "Dávid Ottó",
+            "Dávid Végh",
+            "Domokos Csaba",
+            "Dzsenifer Farnadi",
+            "Emese Józsa",
+            "Eszter Urbán",
+            "Gergely Balogh",
+            "Gergő Iglódi",
+            "Gréta Fehértói",
+            "Laszlo Pista",
+            "Marcus Vidrányi",
+            "Márk Hatala",
+            "Medárd Molnár",
+            "Péter Laczka",
+            "Reka Farkas",
+            "Szabolcs Derzsi",
+            "Tamás Kiss",
+            "Tamás Bittera",
+            "Tamás Kecskés"]
+
+        let wasToday = []
+
+        let random = Math.floor(Math.random() * ombrek.length)
+        function giveRandom(ombre) {
+
+            if (wasToday.includes(ombrek[random])) {
+                random = Math.floor(Math.random() * ombrek.length)
+                giveRandom(ombre)
+            }
+            else return random;
+
+        }
+
+        document.querySelector("#round").addEventListener("click", () => {
+
+            if (wasToday.length === ombrek.length) alert("Ma már mindenki volt. Hogy jutottál el ide?")
+            giveRandom(ombrek[random])
+
+            wasToday.push(ombrek[random])
+            document.querySelector("h1").innerText = ombrek[random];
+        }
+
+        )
+
+
+
+
+    </script>
+</body>
+
+</html>

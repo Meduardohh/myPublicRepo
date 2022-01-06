@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color:blanchedalmond
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <form>
+        <label>Name</label><br>
+        <input type="text" name="name" id="name" value="Name" class="input"><br>
+        <label>Kor</label><br>
+        <input type="text" name="kor" id="kor" value="Kor" class="input"><br>
+
+        <input type="text" name="foglalkozas" class="input" value="asd"><br>
+        <input type="text" name="foglalkozasi" class="input" value="asdert"><br>
+
+    </form>
+
+    <script>
+        let thisForm=document.querySelector("form");
+        let allInputs=thisForm.querySelectorAll("input")
+        let name=document.querySelector("#name")
+        let kor=document.querySelector("#kor")
+        let myDiv=document.querySelector("div") 
+        name.value="Medard"
+        kor.value="1995.07.23"      
+        for(let i=0;i<allInputs.length;++i){
+            console.log(allInputs[i].name,allInputs[i].value,allInputs[i].defaultValue)
+
+            myDiv.innerHTML+=`${allInputs[i].name} : ${allInputs[i].value}<br>`
+        }
+
+        
+
+       
+
+        // myDiv.innerHTML=`Nev:${name.value}<br> Szuldatum:${kor.value}`
+        
+        // console.log(thisForm.querySelectorAll(".input"))
+        
+        // console.log(name.attribute,name.defaultValue,name.value)        
+        // console.log(kor.defaultValue,kor.value,kor.name)
+      
+    </script>
+</body>
+</html>
