@@ -14,25 +14,45 @@
             font-size: 7rem;
         }
 
-        button {
-            background-color: bisque;
-            height: 10em;
-            width: 15em;
+        #menu {
+
             position: absolute;
             bottom: 10%;
-            left: 45%
+            left: 30%;
+            margin: auto;
+            padding: 10px;
         }
 
         h6 {
             margin: auto;
         }
+
+        button:hover {
+            background-color: rgba(255, 243, 205, 0.986);
+
+        }
+
+        button {
+            background-color: bisque;
+            height: 8em;
+            width: 15em;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bolder;
+        }
+
+        h1 {
+            margin: auto;
+            margin-top: 10%;
+        }
     </style>
 </head>
 
 <body>
-    <div>
+    <div id="menu">
         <button type="submit" id="round">Who dies next?</button>
-        <button type="submit" id="save">Save people who already participated</button>
+        <button type="submit" id="save">Save</button>
+        <button type="submit" id="reset">Reset</button>
     </div>
     <div id="dead">
         <h6>The most unlucky person this time is:</h6>
@@ -58,21 +78,23 @@
             "Laszlo Pista",
             "Marcus Vidrányi",
             "Márk Hatala",
-            "Medárd Molnár",
             "Péter Laczka",
             "Reka Farkas",
             "Szabolcs Derzsi",
             "Tamás Kiss",
             "Tamás Bittera",
-            "Tamás Kecskés"];
+            "Tamás Kecskés",
+            "Medárd Molnár",];
+
 
         let wasToday = []
+        if (localStorage.length > 0) wasToday = JSON.parse(localStorage.getItem("Already dead"))
 
-        let random = Math.floor(Math.random() * ombrek.length)
+        let random = Math.floor(Math.random() * ombrek.length-1)
         function giveRandom(ombre) {
 
             if (wasToday.includes(ombrek[random])) {
-                random = Math.floor(Math.random() * ombrek.length)
+                random = Math.floor(Math.random() * ombrek.length-1)
                 giveRandom(ombre)
             }
             else return random;
@@ -83,15 +105,19 @@
 
             if (wasToday.length === ombrek.length) return alert("Ma már mindenki volt. Hogy jutottál el ide?")
             giveRandom(ombrek[random])
-
+            if(typeof ombrek[random]==="undefined") giverandom(ombrek[random])
             wasToday.push(ombrek[random])
             document.querySelector("h1").innerText = ombrek[random];
-            
+
         }
         )
 
-        document.querySelector("#save").addEventListener("click",()=>{
-            window.localStorage.setItem("Already dead",JSON.stringify(wasToday));
+        document.querySelector("#save").addEventListener("click", () => {
+            localStorage.setItem("Already dead", JSON.stringify(wasToday));
+        })
+        document.querySelector("#reset").addEventListener("click", () => {
+            localStorage.clear()
+            wasToday = []
         })
 
 
