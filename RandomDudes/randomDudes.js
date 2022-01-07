@@ -1,5 +1,5 @@
 
-let ombrek = [
+let ombrekArr = [
     "Ádám Oláh",
     "Ádám Szonyi",
     "Ákos Szoke",
@@ -25,28 +25,49 @@ let ombrek = [
     "Tamás Kecskés"];
 
 
+
+// To object for better data manipulation
+function toObj(arr) {
+    let newObj = []
+    for (let i = 0; i < arr.length; ++i) {
+        newObj[i] = {
+            name: arr[i],
+            was: false,
+
+        }
+    }
+    return newObj;
+}
+
+
+
+let ombrek = toObj(ombrekArr)
 let wasToday = []
 if (localStorage.length > 0) wasToday = JSON.parse(localStorage.getItem("Already dead"))
 let saved = false;
 let random = Math.floor(Math.random() * ombrek.length)
 
+
+
+// Random checking and stuff
 function giveRandom(ombre) {
 
-    if (wasToday.includes(ombrek[random])) {
+    if (wasToday.includes(ombrek[random].name)) {
         random = Math.floor(Math.random() * ombrek.length)
         giveRandom(ombre)
     }
     else return random;
 
 }
-
+// Buttons
 document.querySelector("#round").addEventListener("click", () => {
 
-    if (wasToday.length === ombrek.length) return alert("No more confidence to destroy. Please ")
-    giveRandom(ombrek[random])
-    wasToday.push(ombrek[random])
+    if (wasToday.length === ombrek.length) return alert("No more confidence to destroy. Please stahp")
+    giveRandom(ombrek[random].name)
+    ombrek[random].was = true;
+    wasToday.push(ombrek[random].name)
     while (random === 16) ++random;
-    document.querySelector("h1").innerText = ombrek[random];
+    document.querySelector("h1").innerText = ombrek[random].name;
 
 }
 )
@@ -59,6 +80,9 @@ document.querySelector("#save").addEventListener("click", () => {
 document.querySelector("#reset").addEventListener("click", () => {
     localStorage.clear()
     wasToday = []
+    for (let i = 0; i < ombrek.length;++i){
+        ombrek[i].was=false;
+    }
 })
 
 window.addEventListener("beforeunload", function (e) {
@@ -69,6 +93,8 @@ window.addEventListener("beforeunload", function (e) {
         return confirmationMessage;
     }
 });
+
+
 
 
 

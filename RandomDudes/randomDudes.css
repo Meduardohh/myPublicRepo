@@ -14,7 +14,8 @@
 
             position: absolute;
             bottom: 10%;
-            left: 30%;
+            right: 25%;
+            left:25%;
             margin: 1rem;
             padding: 10px;
             display:flex;
