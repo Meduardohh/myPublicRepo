@@ -6,46 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who get's to be the lucky one?</title>
-    <style>
-        body {
-            background-color: black;
-            color: beige;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            font-size: 7rem;
-        }
-
-        #menu {
-
-            position: absolute;
-            bottom: 10%;
-            left: 30%;
-            margin: auto;
-            padding: 10px;
-        }
-
-        h6 {
-            margin: auto;
-        }
-
-        button:hover {
-            background-color: rgba(255, 243, 205, 0.986);
-
-        }
-
-        button {
-            background-color: bisque;
-            height: 8em;
-            width: 15em;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: bolder;
-        }
-
-        h1 {
-            margin: auto;
-            margin-top: 10%;
-        }
-    </style>
+    <link rel="stylesheet" href="randomDudes.css">
 </head>
 
 <body>
@@ -60,72 +21,7 @@
     </div>
 
 
-    <script>
-        let ombrek = [
-            "Ádám Oláh",
-            "Ádám Szőnyi",
-            "Ákos Szőke",
-            "Arpad Toth",
-            "Dávid Balázs",
-            "Dávid Farkas",
-            "Dávid Végh",
-            "Domokos Csaba",
-            "Dzsenifer Farnadi",
-            "Emese Józsa",
-            "Eszter Urbán",
-            "Gergő Iglódi",
-            "Gréta Fehértói",
-            "Laszlo Pista",
-            "Marcus Vidrányi",
-            "Márk Hatala",
-            "Péter Laczka",
-            "Reka Farkas",
-            "Szabolcs Derzsi",
-            "Tamás Kiss",
-            "Tamás Bittera",
-            "Tamás Kecskés",
-            "Medárd Molnár",];
-
-
-        let wasToday = []
-        if (localStorage.length > 0) wasToday = JSON.parse(localStorage.getItem("Already dead"))
-
-        let random = Math.floor(Math.random() * ombrek.length-1)
-        function giveRandom(ombre) {
-
-            if (wasToday.includes(ombrek[random])) {
-                random = Math.floor(Math.random() * ombrek.length-1)
-                giveRandom(ombre)
-            }
-            else return random;
-
-        }
-
-        document.querySelector("#round").addEventListener("click", () => {
-
-            if (wasToday.length === ombrek.length) return alert("Ma már mindenki volt. Hogy jutottál el ide?")
-            giveRandom(ombrek[random])
-            if(typeof ombrek[random]==="undefined") giverandom(ombrek[random])
-            wasToday.push(ombrek[random])
-            document.querySelector("h1").innerText = ombrek[random];
-
-        }
-        )
-
-        document.querySelector("#save").addEventListener("click", () => {
-            localStorage.setItem("Already dead", JSON.stringify(wasToday));
-        })
-        document.querySelector("#reset").addEventListener("click", () => {
-            localStorage.clear()
-            wasToday = []
-        })
-
-
-
-
-
-
-    </script>
+   <script src="randomDudes.js"></script>
 </body>
 
 </html>

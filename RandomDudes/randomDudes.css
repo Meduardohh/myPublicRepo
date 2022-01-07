@@ -1,0 +1,79 @@
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+        
+        body {
+
+            background-color: black;
+            color: beige;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 7rem;
+        }
+
+        #menu {
+
+            position: absolute;
+            bottom: 10%;
+            left: 30%;
+            margin: 1rem;
+            padding: 10px;
+            display:flex;
+        }
+
+        h6 {
+            font-family: 'Creepster', cursive;
+            color:#bb0a1e;
+            margin: auto;
+        }
+
+        button:hover {
+            background-color: rgba(255, 243, 205, 0.986);
+
+        }
+
+        button {
+            background-color: rgb(119, 36, 36);
+            height: 8em;
+            width: 15em;
+            border-radius: 100%;
+            font-size: 1rem;
+            font-weight: bolder;
+            background-image: url("https://unsplash.com/photos/ZC0EbdLC8G0");
+        }
+
+        h1 {
+            margin: auto;
+            margin-top: 10%;
+            font-family: 'Creepster', cursive;
+            color:#bb0a1e;
+        }
+        @media only screen and (max-width:1150px){
+            button{
+                width:10em;
+                height:6em;
+            }
+            h1{
+                margin-top:50px;
+            }
+        }
+        @media only screen and (max-width:830px){
+            body{
+                font-size:6rem ;
+            }
+            button{
+                width:7,5em;
+                height:5em;
+            }
+        }
+        @media only screen and (max-width:780px){
+            #menu{
+                flex-direction: column;
+                bottom:5%;
+            }
+           
+        }
+        @media only screen and (max-width:620px){
+            body{
+                font-size:4rem;
+            }
+        }
