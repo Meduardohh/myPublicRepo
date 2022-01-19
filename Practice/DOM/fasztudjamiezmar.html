@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+    background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <div>a
+    <div>a
+        <p>a
+        <ul>
+            <li>A<p></p>
+            </li>
+        </ul>
+        </p>
+    </div>
+</div>
+
+
+
+    <script>
+        let clicked = false;
+
+        document.body.addEventListener("click", (e) => {
+           
+            if (!clicked) {
+                clicked = true;
+                console.log(e.target.parentNode.firstChild, e.target.parentNode.lastChild)
+                e.target.parentNode.style.border = "solid 3px black";
+                // e.target.parentNode.firstChild.stlye.backgroundColor = "orange";
+                // e.target.parentNode.lastChild.stlye.backgroundColor = "green";   
+                e.target.firstChild.stlye.backgroundColor = "orange";
+                e.target.lastChild.stlye.backgroundColor = "green";        
+
+
+            } else if (clicked) {
+                clicked = false;
+                e.target.parentNode.style.border = "";
+
+                // e.target.parentNode.firstChild.stlye.border = "";
+                // e.target.parentNode.lastChild.stlye.backgroundColor = "";
+
+                e.target.firstChild.stlye.border = "";
+                e.target.lastChild.stlye.backgroundColor = "";
+                
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

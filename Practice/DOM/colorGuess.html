@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: flex;
+            height: 800px;
+            width: 800px;
+            flex-wrap: wrap;
+
+        }
+
+        #interface {
+            position: absolute;
+            top: 10%;
+            left: 30%;
+        }
+
+        .color {
+            border: solid 3px black;
+            height: 200px;
+            width: 200px;
+            margin: 10px;
+        }
+        .color:hover{
+            border:solid 3px limegreen
+        }
+
+        body {
+            background-color: #BFB6EA;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="interface">
+        <h1 id="text">Which color do you think i am thinking of?</h1>
+
+        <div id="container">
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            
+        </div>
+        <button type="submit" id="reset">Reset the game</button>
+    </div>
+
+
+
+
+
+    <script>
+        let colors = ["grey", "orange", "yellow", "red", "black", "white", "blue", "green", "lightgreen"]
+        let text = document.querySelector("#text")
+        let colorBoxes = document.querySelectorAll(".color")
+        let pickedColor = Math.floor(Math.random() * 9)
+        let resetButton=document.querySelector("#reset")
+        let fuckUpCounter=0;
+
+        for (let i = 0; i < colorBoxes.length; ++i) {
+
+
+            colorBoxes[i].style.backgroundColor = colors[i]
+            colorBoxes[i].addEventListener("click", () => {
+                if(fuckUpCounter===5){
+                    document.body.backgroundColor="black"
+                     return alert("You have already fucked up 5 times")
+                }
+                if (colorBoxes[i].style.backgroundColor === colors[pickedColor]) {
+                    text.innerText="Congratulations you have picked the right color!"
+                    document.body.backgroundColor="green"
+                }
+                else{
+                    fuckUpCounter++
+                    text.innerText=`You have fucked up ${fuckUpCounter} times`;
+                    
+                }
+            })
+        }
+
+        function toDefault(){
+            document.body.backgroundColor==="#BFB6EA;"
+            pickedColor = Math.floor(Math.random() * 10)
+            fuckUpCounter=0;
+        }
+
+        resetButton.addEventListener("click",()=>{
+            toDefault()
+            text.innerText="Which color do you think i am thinking of?"
+        })
+
+
+    </script>
+</body>
+
+</html>

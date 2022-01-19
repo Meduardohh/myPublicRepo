@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hitBoxClass {
+            height: 400px;
+            width: 400px;
+            /* border: solid 3px lightseagreen; */
+            position: absolute;
+            display: flex;
+            justify-content: center;
+        }
+
+        .content {
+            position: relative;
+            top: 45%;
+            right: 27%;
+            transform: translate(50%, -50%);
+            width: 200px;
+            height: 150px;
+            border: solid 3px #194759;
+            background-color: #0f2d40;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 2rem;
+            text-align: center;
+            color: #d8f2f0;
+
+
+        }
+
+        body {
+            background-color: #3c2f56;
+            height: 80vh;
+            width: 90vw;
+        }
+
+        .content2 {
+            display: none;
+        }
+        h6{
+            padding:5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hitBoxClass" id="hitBox">
+        <div class="content">
+            <h6>Click on me if you dare!</h6>
+        </div>
+    </div>
+
+    <div class="hitBoxClass" id="hitBox2">
+        <div class="content content2">
+            <h6>You know what time it is?</h6>
+            <div>
+            </div>
+
+
+
+            <script>
+                let rollCounter = -1;
+                let countDown = 5;
+                let was = false;
+
+                let hitBox = document.querySelector("#hitBox");
+                let hitBox2 = document.querySelector("#hitBox2");
+                let content = document.querySelector(".content")
+                let content2 = document.querySelector(".content2")
+
+                let rickRoll = [
+                    "We're no strangers to love",
+                    "You know the rules and so do I",
+                    "A full commitment's what I'm thinking of",
+                    "You wouldn't get this from any other guy",
+                    "I just wanna tell you how I'm feeling",
+                    "Gotta make you understand",
+                    "Never gonna give you up",
+                    "Never gonna let you down",
+                    "Never gonna run around and desert you",
+                    "Never gonna make you cry",
+                    "Never gonna say goodbye",
+                    "Never gonna tell a lie and hurt you",
+                    "We've known each other for so long",
+                    "Your heart's been aching but you're too shy to say it",
+                    "Inside we both know what's been going on",
+                    "We know the game and we're gonna play it",
+                    "And if you ask me how I'm feeling",
+                    "Don't tell me you're too blind to see",
+                    "Never gonna give you up",
+                    "Never gonna let you down",
+                    "Never gonna run around and desert you",
+                    "Never gonna make you cry",
+                    "Never gonna say goodbye",
+                    "Never gonna tell a lie and hurt you",
+                    "Never gonna give you up",
+                    "Never gonna let you down",
+                    "Never gonna run around and desert you",
+                    "Never gonna make you cry",
+                    "Never gonna say goodbye",
+                    "Never gonna tell a lie and hurt you",
+                    "Never gonna give you up",
+                    "Never gonna let you down",
+                    "Never gonna run around and desert you",
+                    "Never gonna make you cry",
+                    "Never gonna say goodbye",
+                    "Never gonna tell a lie and hurt you",
+
+
+                ]
+
+                let texts = [
+                    "Pathetic mortal",
+                    "If you wanted to disappoint people why didn't you just go home to your parents?",
+                    "Can't even click on a box. Pathetic",
+                    "My grandma can click on this. Dude. How high are you?",
+                    "Could you be more useless?",
+                    "This is like the time when you lost in chess to a chicken right?",
+                    "It's time to do less drugs. Just kidding. It might be the reason to start using more"
+                ]
+
+                function randomText() {
+                    content.innerText = texts[Math.floor(Math.random() * texts.length)]
+                    content.style.fontSize = "1.5rem"
+                }
+
+
+
+                function reposition(hitBox) {
+                    let viewH = window.innerHeight;
+                    let viewW = window.innerWidth;
+
+                    hitBox.style.top = `${Math.floor(Math.random() * viewH)}px`;
+                    hitBox.style.left = `${Math.floor(Math.random() * viewW)}px`;
+                }
+
+
+                reposition(hitBox);
+                hitBox.addEventListener("mousemove", (e) => {
+                    console.log("beleptel");
+                    reposition(hitBox);                   
+                    if (countDown) countDown--;
+                    else content2.style.display = "inline-block"
+
+                })
+                hitBox.addEventListener("mouseenter", (e) => {
+                    randomText();
+                })
+
+
+                //RickRoll
+                reposition(hitBox2)
+
+                hitBox2.addEventListener("mousemove", (e) => {
+                    // console.log("beleptel");                                       
+                    reposition(hitBox2);
+                }
+                )
+
+                hitBox2.addEventListener("mouseenter", (e) => {
+                    console.log("asd")
+                    if (!countDown) {
+                        content2.innerText = rickRollFunc()
+                    }
+                })
+
+                function rickRollFunc() {
+                    if (rollCounter === rickRoll.length - 1) rollCounter = 6;
+                    return rickRoll[++rollCounter]
+                }
+
+
+            </script>
+
+</body>
+
+</html>

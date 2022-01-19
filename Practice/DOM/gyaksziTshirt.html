@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TshirtFilter</title>
+    <style>
+        body{
+           margin:5%;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="slct">
+        <option>Red</option>
+        <option>Blue</option>
+        <option>Yellow</option>
+        <option>Black</option>
+        <option>White</option>
+    </select>
+    <button id="filter">Filter</button><br><br>
+
+    <div id="display">
+        <div></div>
+    </div><br>
+    <!-- <form id="addForm"> -->
+        <input id="shirtColor" type="text" placeholder="Tshirt color"></input><br>
+        <input id="text" type="text" placeholder="Text"></input><br>
+        <input id="textColor" type="text" placeholder="Text color"></input><br>
+        <input id="qty"  type="qty" placeholder="Qty"></input><br>
+        <button type="submit" id="submitBt" >Submit</button>
+    <!-- </form> -->
+
+    <script>
+        let shirts = [
+            { color: "red", text: "You are the CSS to my HTML", textColor: "yellow", qty: 5 },
+            { color: "blue", text: "Woof", textColor: "white", qty: 3 },
+            { color: "yellow", text: "I <3 JavaScript", textColor: "green", qty: 1 },
+            { color: "black", text: "Titanium Dioxide", textColor: "white", qty: 3 },
+            { color: "white", text: "DUNGEON SYNTH", textColor: "black", qty: 5 }
+        ];
+
+
+        let select = document.querySelector("#slct")
+        let display=document.querySelector("#display")
+
+
+        let formShirt=document.querySelector('#shirtColor');
+        let formText=document.querySelector('#text');
+        let formTextColor=document.querySelector("#textColor");
+        let formQty=document.querySelector("#qty");
+
+
+        function tShirt(which) {
+            let newItem = document.createElement("div");
+            newItem.classList.add("tShirt")
+            newItem.innerHTML = `Shirt color:${shirts[which].color}<br> RandomBS:${shirts[which].text}<br>Qty:${shirts[which].qty}`;
+            display.append(newItem)
+            newItem.style.backgroundColor=shirts[which].color
+            newItem.style.color=shirts[which].textColor;
+        }
+
+         document.querySelector("#filter").addEventListener("click", () => {
+            display.removeChild(display.lastChild)
+            let value=""
+            for(let i=0;i<shirts.length;++i){
+                value=select.value.toLowerCase()
+                if(value===shirts[i].color) tShirt(i)
+            }
+
+         })
+
+
+       
+        document.querySelector("#submitBt").addEventListener("click",()=>{
+            let newObj={
+                color:formShirt.value,
+                text:formText.value,
+                textColor:formTextColor.value,
+                qty:formQty.value
+            }
+            shirts.push(newObj)
+            let newItem=document.createElement("option")
+            newItem.innerText=newObj.color;
+            select.append(newItem)
+        })
+    </script>
+</body>
+
+</html>

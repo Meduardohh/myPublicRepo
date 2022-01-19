@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            background-color: black;
+            color:beige;
+            height:3.5rem;
+            margin-bottom:15px;
+        }
+        button:hover{
+            background-color: darkgrey;
+        }
+        #display{
+            font-size: 2rem;
+            margin:4rem;
+        }
+        div{
+            font-size: 3.5rem;
+        }
+    </style>
+</head>
+<body>
+    <button id="first">London</button>
+    <button id="second">Paris</button>
+    <button id="third">Faszomtudja</button><br>
+    <div id="display1">asd1<img src="https://placedog.net/500/g"></div>
+    <div id="display2">asd2</div>
+    <div id="display3">asd3</div>
+
+
+    <script>
+                            
+        let buttons=document.querySelectorAll("button")
+        let divs=document.querySelectorAll("div")
+        for(let i=0;i<buttons.length;++i){
+            buttons[i].addEventListener("click",()=>{
+                toDefault()
+                buttons[i].style.backgroundColor="grey"
+                divs[i].style.display="inline-block"
+            })
+        }
+
+        function toDefault(){
+            
+            for(let i=0;i<buttons.length;++i){
+                buttons[i].style.backgroundColor="black"
+                divs[i].style.display="none"
+            }
+        }
+        toDefault()
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #context {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 200px;
+            background-color: brown;
+            font-size: 2.5rem;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="context">
+        Le van tiltva baszod
+    </div>
+
+    <script>
+        let menu = document.querySelector("#context")
+        let displayed = false;
+        window.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            if (!displayed) {
+                displayed = true;
+                let mouseX = e.clientX
+                let mouseY = e.clientY
+                menu.style.display = "inline-block";
+                menu.style.left = `${mouseX}px`;
+                menu.style.top = `${mouseY}px`;
+
+
+            }
+            else if (displayed) {
+                menu.style.display = "none";
+                displayed = false;
+
+
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

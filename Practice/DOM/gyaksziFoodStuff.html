@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodStuff</title>
+    <style>
+        body {
+            background-color: black;
+            color: darkblue;
+            font-size: 2rem;
+        }
+
+        #shelves {
+            position: relative;
+            top: 25%;
+            left: 30%;
+            width: 40%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .shelf {
+            height: 150px;
+            width: auto;
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .buttons {
+            position: absolute;
+            bottom: 30px;
+            left: 40px;
+        }
+
+        .shelfItem {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="shelves">
+        <div class="shelf" id="firstShelf"></div><br>
+
+
+        <div class="shelf" id="secondShelf"></div><br>
+
+
+        <div class="shelf" id="thirdShelf"></div><br>
+
+
+
+
+
+    </div>
+    <div class="buttons">
+        <button id="nextDay">Next day</button>
+        <button id="remove" disabled>Throw out</button>
+    </div>
+
+
+    <script>
+        let fridge = [
+            [  // first shelf
+                {
+                    name: "milk",
+                    daysRemain: 4
+                },
+                {
+                    name: "yogurt",
+                    daysRemain: 6
+                }
+            ],
+
+
+            [  // second shelf
+                {
+                    name: "salami",
+                    daysRemain: 3
+                },
+                {
+                    name: "beer",
+                    daysRemain: 8
+                }
+            ],
+
+
+            [  // third shelf
+                {
+                    name: "lunch",
+                    daysRemain: 2
+                },
+                {
+                    name: "tomatoes",
+                    daysRemain: 4
+                },
+                {
+                    name: "cucumber",
+                    daysRemain: 3
+                }
+            ]
+        ];
+
+
+        let firstShelf = document.querySelector("#firstShelf")
+        let secondShelf = document.querySelector("#secondShelf")
+        let thirdShelf = document.querySelector("#thirdShelf")
+
+        let firstShelfdivs = document.querySelector("#firstShelf").getElementsByTagName('div')
+        let secondShelfdivs = document.querySelector("#secondShelf").getElementsByTagName('div')
+        let thirdShelfdivs = document.querySelector("#thirdShelf").getElementsByTagName('div')
+
+        let shelfArr = [firstShelfdivs, secondShelfdivs, thirdShelfdivs]
+
+        let nextButton = document.querySelector("#nextDay")
+        let removeButton = document.querySelector("#remove")
+
+
+
+
+        function dayChecker(day) {
+            if (day > 4) return "green"
+            else if (day <= 4 && day > 1) return "yellow"
+            else if (day < 2 && day > 0) return "red"
+            else return "black"
+        }
+
+        function shelfPacker(packable, appendTo) {
+            for (let i = 0; i < packable.length; ++i) {
+                let newItem = document.createElement("div")
+                newItem.innerText = packable[i].name + `(days remaining:${packable[i].daysRemain})`
+                newItem.classList.add("shelfItem")
+                newItem.style.backgroundColor = dayChecker(packable[i].daysRemain)
+                appendTo.append(newItem)
+                newItem.addEventListener("dblclick", () => {
+                    appendTo.removeChild(newItem);
+                })
+                let selected = false;
+                newItem.addEventListener("click", () => {                    
+                    if (!selected) {
+                        newItem.style.border = "5px solid blue";
+                        remove.disabled = false;
+                        selected=true;
+                        remove.addEventListener("click", () => {
+                        appendTo.removeChild(newItem);
+                        // newItem.parentNode.removeChild(newItem);
+                        remove.disabled = true;
+                        
+                    })
+                    }
+                    else if(selected){
+                        newItem.style.border = "";
+                        remove.disabled = true;
+                        selected=false;
+                    }
+                                                                           
+                })
+            }
+        }
+
+        function nextDay() {
+            for (let i = 0; i < fridge.length; ++i) {
+                for (let j = 0; j < fridge[i].length; ++j) {
+                    if (fridge[i][j].daysRemain === 0) continue;
+                    fridge[i][j].daysRemain--
+                }
+            }
+        }
+
+
+        function dayChanger() {
+
+            for (let j = 0; j < shelfArr.length; ++j) {
+                for (let i = 0; i < shelfArr[j].length; ++i) {
+                    let child = shelfArr[j][i]
+                    child.innerText = fridge[j][i].name + `(days remaining:${fridge[j][i].daysRemain})`
+                    child.style.backgroundColor = dayChecker(fridge[j][i].daysRemain)
+
+
+                }
+            }
+        }
+
+        nextButton.addEventListener("click", () => {
+            nextDay()
+            dayChanger()
+
+        })
+
+        // let appendTo=""
+        // for(let i=0;i<fridge.length;++i){
+        //     if(i=0)appendTo=firstShelf
+        //     else if(i=1)appendTo=secondShelf
+        //     else if(i=2)appendTo=thirdShelf
+        //     else break;
+        //     shelfPacker(fridge[i],appendTo)
+        // }
+        shelfPacker(fridge[0], firstShelf)
+        shelfPacker(fridge[1], secondShelf)
+        shelfPacker(fridge[2], thirdShelf)
+
+
+
+
+    </script>
+
+</body>
+
+</html>

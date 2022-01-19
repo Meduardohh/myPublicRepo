@@ -16,7 +16,6 @@ let ombrekArr = [
     "Laszlo Pista",
     "Marcus Vidrányi",
     "Márk Hatala",
-    "Medárd Molnár",
     "Péter Laczka",
     "Réka Farkas",
     "Szabolcs Derzsi",
@@ -66,7 +65,6 @@ document.querySelector("#round").addEventListener("click", () => {
     giveRandom(ombrek[random].name)
     ombrek[random].was = true;
     wasToday.push(ombrek[random].name)
-    while (random === 16) ++random;
     document.querySelector("h1").innerText = ombrek[random].name;
 
 }
@@ -94,8 +92,14 @@ window.addEventListener("beforeunload", function (e) {
     }
 });
 
-
-
+document.querySelector("#themeOptions").addEventListener("option",()=>{
+    let option=document.querySelector("option");
+    if(option==="Gore"){
+        document.querySelector("h6").style.fontFamily="'Creepster', cursive;";
+        document.querySelector("h1").style.fontFamily="'Creepster', cursive;";
+        document.querySelector("button").style.backgroundColor="rgb(119, 36, 36);";
+    }
+})
 
 
 

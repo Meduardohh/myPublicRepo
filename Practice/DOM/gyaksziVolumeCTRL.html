@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            margin-left: 40%;
+            margin-right: 40%;
+            position: absolute;
+            bottom: 5%;
+            left: 20%;
+            display: flex;
+            flex-direction: column-reverse;
+            width: 200px;
+            height: auto;
+        }
+
+        #control {
+            position: absolute;
+            bottom: 20px;
+            left: 40px;
+        }
+
+        body {
+            background-color: black;
+            color: red
+        }
+
+        div {
+            border: red 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <div id="control">
+        <button id="volumeUp">Volume up</button>
+        <button id="volumeDown">Volume down</button>
+        <button id="volumeMute">Mute</button>
+    </div>
+
+
+    <script>
+        let volumeUp = document.querySelector("#volumeUp");
+        let volumeDown = document.querySelector("#volumeDown");
+        let volumeMute = document.querySelector("#volumeMute");
+        let container = document.querySelector("#container");
+        let currentVolume = 2;
+        let volumeWas = 0;
+        let muted = false;
+
+
+        
+
+        function volumeSetter(num) {
+
+            if (currentVolume > 12) return;
+            let newVolume = document.createElement("div");
+            container.appendChild(newVolume);
+            newVolume.style.width = "auto";
+            newVolume.style.height = "50px";
+
+            if (num <= 4) newVolume.style.backgroundColor = "green";
+            if (num <= 9 && num > 4) newVolume.style.backgroundColor = "yellow";
+            if (num > 9) newVolume.style.backgroundColor = "orange";
+        }
+        
+        for(let i=0;i<currentVolume;++i){
+            volumeSetter(i)
+        }
+
+        volumeUp.addEventListener("click", () => {
+            if (muted) return;
+            volumeDown.disabled = false;
+            currentVolume++;
+            volumeSetter(currentVolume);
+            if (currentVolume === 12) {
+                volumeUp.disabled = true;
+
+            }
+        })
+
+        volumeDown.addEventListener("click", () => {
+            if (muted) return;
+            currentVolume--
+            volumeUp.disabled = false;
+
+            container.removeChild(container.lastChild)
+            if (currentVolume === 0) {
+                volumeDown.disabled = true;
+            }
+        })
+
+
+        volumeMute.addEventListener("click", () => {
+            if (!muted) {
+                volumeWas = currentVolume;
+                volumeMute.innerText = 'Unmute'
+                muted = true;
+                currentVolume = 0;
+                while (container.firstChild) {
+                    container.removeChild(container.lastChild);
+                }
+
+            }
+            else if (muted) {
+                muted = false;
+                volumeMute.innerText = 'Mute'
+                currentVolume = volumeWas;
+                for (let i = 1; i <= currentVolume; ++i) {
+                    volumeSetter(i);
+
+
+                }
+            }
+
+
+
+
+        })
+    </script>
+
+</body>
+
+</html>

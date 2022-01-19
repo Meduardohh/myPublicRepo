@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: darkgray;
+
+        }
+
+        #info{
+            width:300px;
+            height:300px;
+            display:none;
+            position:absolute;
+            top:10px;
+            left:20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <img id="image" alt="asd" src="https://placedog.net/500">
+
+    <div id="info">
+        random genya info erről a képről baszki
+        <img  alt="asd" src="https://placedog.net/100">
+    </div>
+    <script>
+
+        let info=document.querySelector("#info")
+        let image=document.querySelector("#image")
+
+        image.addEventListener("click",(e)=>{
+
+            info.style.display="block"
+            info.style.top=e.clientY+"px"
+            info.style.left=e.clientX+"px"
+
+            document.addEventListener("keydown",(e)=>{
+                if(e.key==="Escape"){
+                    info.style.display="none"
+                }
+            })
+
+
+
+        })
+        
+    </script>
+</body>
+</html>

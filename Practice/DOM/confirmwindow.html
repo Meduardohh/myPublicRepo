@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #confirmWindow{
+            width:200px;
+            height: 200px;
+            background-color: cadetblue;
+            display:none;
+            align-items: center;
+        }
+        body{
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <a id="link" href="https//www.google.com"> Hova mész baszod?</a><br>
+    <div id="confirmWindow">
+        <p>Are you sure you want to leave this site?</p><br>
+        <button id="yesButton">Yes</button>
+        <button id="cancelButton">Cancel</button>
+    </div>
+
+    <script>
+        let confirmWindow=document.querySelector("#confirmWindow")
+        let yesButton=document.querySelector("#yesButton")
+        let cancelButton=document.querySelector("#cancelButton")
+        let link=document.querySelector("#link")
+
+
+        link.addEventListener("click",(e)=>{
+            e.preventDefault();
+            confirmWindow.style.display="inline-block";
+            cancelButton.addEventListener("click",()=>{
+                confirmWindow.style.display="none";
+            })
+            yesButton.addEventListener("click",()=>{
+                window.location.replace("https://www.google.com/")
+            })
+
+        })
+
+
+
+    </script>
+
+    
+</body>
+</html>
+

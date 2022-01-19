@@ -22,7 +22,7 @@
         }
 
         h6 {
-            font-family: 'Creepster', cursive;
+            /* font-family: 'Creepster', cursive; */
             color:#bb0a1e;
             margin: auto;
         }
@@ -33,20 +33,25 @@
         }
 
         button {
-            background-color: rgb(119, 36, 36);
+            /* background-color: rgb(119, 36, 36); */
             height: 8em;
             width: 15em;
             border-radius: 100%;
             font-size: 1rem;
             font-weight: bolder;
-            background-image: url("https://unsplash.com/photos/ZC0EbdLC8G0");
+           
         }
 
         h1 {
             margin: auto;
             margin-top: 10%;
-            font-family: 'Creepster', cursive;
+            /* font-family: 'Creepster', cursive; */
             color:#bb0a1e;
+        }
+        #themeOptions{
+            position:absolute;
+            bottom:15px;
+            right:15px;
         }
         @media only screen and (max-width:1150px){
             button{
