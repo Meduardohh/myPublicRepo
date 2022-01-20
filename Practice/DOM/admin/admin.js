@@ -156,11 +156,25 @@ for (let i = 0; i < dataBase.length; ++i) {
     
 }
 
-for (let i = 0; i < userImages.length; ++i) {
-    userImages[i].addEventListener("click", (e) => {
-        let image = e.target
+userSelect.addEventListener("change",()=>{
+    
+    let userIndex=0
+    for(let i=0;i<dataBase.length;++i){
+        if(dataBase[i].username===userSelect.values){
+            userIndex=i;
+            break;
+        }
+
+    }
+
+    for (let i = 0; i < userImages.length; ++i) {
+        userImages[i].addEventListener("click", (e) => {
+            let image = e.target.innerHTML  
+            dataBase[userIndex].imageurl=image;
+            dataBase[userIndex].isimage=true;              
+        })
+    }
 
 
+})
 
-    })
-}
