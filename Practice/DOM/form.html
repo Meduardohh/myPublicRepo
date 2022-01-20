@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+       body{
+           background-color: burlywood;
+       }
+   </style>
+</head>
+<body>
+<h1>Épp ezt szerkeszted </h1>
+<h4></h4>
+
+<hr>
+    <label for="fullName">
+        Teljes név</label><br>
+        <input id="fullName" type="text"><br>
+        <label for="eMail"> E-mail</label><br>
+        <input id="eMail" type="text"><br>
+        <label for="tel">Telefonszám</label><br>
+        <input id="tel" type="number"><br>
+
+      
+
+
+
+        <script>
+            const inputs=document.querySelectorAll("input")
+            const header=document.querySelector("h4")
+            const label=document.querySelectorAll("label")
+            
+
+            for(let i=0;i<inputs.length;++i){
+                inputs[i].addEventListener("focusin",(e)=>{
+                    e.target.style.backgroundColor="red"
+                    // header.innerText=`Épp ezt szerkeszted ${label[i].innerText} :`
+
+
+                    inputs[i].addEventListener("blur",(e)=>{
+                        e.target.style.backgroundColor="white"
+                        if(inputs[i].value.length>0){
+                            let newItem=document.createElement("strong")
+                            newItem.innerText="✔"
+                            inputs[i].after(newItem)
+                        }
+
+                    })
+
+                    inputs[i].addEventListener("keyup",(e)=>{
+                        // if(e.key==="Backspace")return;
+                        header.innerText=`${label[i].innerText} :${inputs[i].value}`
+                        if(inputs[i].value.length>0)inputs[i].style.backgroundColor="green"
+                        if(inputs[i].value.length===0)inputs[i].style.backgroundColor="red"                        
+                    })
+                   
+                })
+            }
+
+
+            
+
+
+
+        </script>
+    
+</body>
+</html>
