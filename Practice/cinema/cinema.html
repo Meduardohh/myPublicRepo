@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #3E6C7D;
+
+            margin-top: 8%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        div {
+            background-color: blanchedalmond;
+        }
+
+        input,#price,#selector,#yourSeats,#yourSeatsTotal {
+
+            margin: 10px;
+        }
+
+        #container {
+            display: flex;
+            height: 500px;
+            width: 700px;
+            padding: 15px;
+            background-color: #7EDBFC;
+        }
+
+        .form {
+            height: 60%;
+            width: 45%;
+            background-color: #64767D;
+            margin-right: 25px;
+            padding:10px;
+        }
+
+        .reserve {
+            width: 800px;
+            height: 450px;
+            background-color: #64767D;
+            display: flex;
+            flex-wrap: wrap;
+            display: none;
+        }
+
+        .beforeReserve {
+            width: 800px;
+            height: 450px;
+            background-color: #64767D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+        }
+
+        #submitButton {
+            margin-left: 4%;
+            margin-right: 10%;
+           
+        }
+
+        .seat {
+            height: 50px;
+            width: 50px;
+            background-color: #66B1CC;
+            margin: 3px;
+            border-radius: 4px;
+
+        }
+
+        .seat:hover {
+            border: dotted 1px red
+        }
+
+        .selected {
+            background-color: #3E6C7D;
+        }
+
+        #beforeReserveTxt {
+            background-color: #66B1CC;
+            font-size: 1.5rem;
+            align-self: center;
+            align-content: center;
+            padding:5px;
+            
+        }
+        #subReserve{
+            margin:5%;
+            position:relative;
+            bottom:5px;
+            left:300px;
+        }
+        button{
+            background-color: #3E6C7D;
+            color:white;
+            border-radius: 3px;
+            padding:3px;
+        }
+        
+      
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <div class="form">
+            <input type="text" id="name" placeholder="Name:"><br>
+            <input type="email" id="email" placeholder="Email:"><br>
+            <input type="tel" placeholder="Tel:" id="tel"><br>
+            <button id="submitButton" type="submit">Submit</button><br>
+            <!-- <select id="selector">
+                <option>Ash Catch ág Palett városban</option>
+                <option>Anál vadász 9</option>
+                <option>A gyűrűm fura</option>
+                <option></option>
+            </select><br> -->
+            <span id="price">The price is:<strong id="priceTotal"></strong>Ft</span><br>
+            <span id="yourSeats">Your selected seat(s):<br><strong id="yourSeatsTotal"></strong></span>
+        </div>
+       
+        <div class="beforeReserve">
+            <div id="beforeReserveTxt">You have to fill out the form before reserving</div>
+        </div>
+        <div class="reserve">
+
+           <button type="submit" id="subReserve">Submit reservation</button>
+        </div>
+    </div>
+    <script>
+
+
+        let reserveContainer = document.querySelector(".reserve")
+        let beforeReserve = document.querySelector(".beforeReserve")
+        let submit = document.querySelector("#submitButton")
+        let nameInp = document.querySelector("#name")
+        let emailInp = document.querySelector("#email")
+        let telInp = document.querySelector("#tel")
+        let submitReservation = document.querySelector("#subReserve")
+       
+
+
+
+
+
+        class Seat {
+            constructor(row, col, booked, index) {
+                this.row = row;
+                this.col = col;
+                this.booked = booked;
+                this.index = index
+            }
+        }
+        
+        function localStorageGetter(storageKey, fallbackValue = []) {
+            let content;
+            try {
+                content = JSON.parse(localStorage.getItem(storageKey));
+                if(!content) throw new Error("No local storage detected")
+            } catch (err) {
+                content = fallbackValue; 
+            } finally {
+                
+                return content;
+            }
+        }
+        let seatsArr = localStorageGetter("seats")       
+        let reservedSeats = localStorageGetter("reserved")
+       
+        
+
+
+        // if (JSON.parse(localStorage.getItem('reserved')).length > 0) reservedSeats = JSON.parse(localStorage.getItem('reserved'))
+
+
+        // if (JSON.parse(localStorage.getItem('seats')).length > 0) seatsArr = JSON.parse(localStorage.getItem('seats'))
+
+
+
+        function seatsRender(rows, cols) {
+            let index = -1
+            if (seatsArr.length === 0) {
+                for (let i = 0; i <= rows; ++i) {
+                    for (let j = 0; j <= cols; ++j) {
+                        seatsArr.push(new Seat(i, j, false, ++index))
+                    }
+                }
+            }
+
+
+            seatsArr.forEach(seat => {
+
+                let seatDivs = document.createElement("div")
+                seatDivs.classList.add("seat")
+                seatDivs.classList.add(`row-${seat.row}`)
+                seatDivs.classList.add(`col-${seat.col}`)
+                seatDivs.classList.add(`${seat.index}`)
+                submitReservation.before(seatDivs)
+            });
+            // console.log(seatsArr)
+
+        }
+
+        let selectedSeats = []
+
+        reserveContainer.addEventListener("click", (e) => {
+            let selected = Number(e.target.classList[3])
+            console.log(selected)
+           
+            if(!submitReservation.disabled){
+            if (e.target.classList.contains("seat")) {
+                e.target.classList.toggle("selected")
+                
+
+                if (e.target.classList.contains("selected")) {
+                    seatsArr[selected].booked = true;
+                    selectedSeats.push(selected)
+                    console.log(selectedSeats)
+                }
+                else {
+                    for (let i = 0; i < selectedSeats.length; ++i) {
+                        if (selectedSeats[i] === selected) selectedSeats.splice(i, 1)
+                    }
+                    seatsArr[selected].booked = false;
+                }
+
+
+
+                console.log(selected)
+                submitReservation.addEventListener("click", () => {
+                    reservedSeats[reserveIndex].reservedSeats = selectedSeats
+                    localStorage.setItem("reserved", JSON.stringify(reservedSeats))
+                    localStorage.setItem("seats", JSON.stringify(seatsArr))
+                    document.querySelector("#priceTotal").innerText=reservedSeats[reserveIndex].reservedSeats.length*1500
+                    document.querySelector("#yourSeatsTotal").innerText=[...reservedSeats[reserveIndex].reservedSeats]
+                    submitReservation.disabled=true
+
+                })
+            }
+        }})
+        let reserveIndex = reservedSeats.length;
+        submit.addEventListener("click", () => {
+
+            reservedSeats[reserveIndex] = {
+                reserverName: nameInp.value,
+                reserverTel: telInp.value,
+                reserverMail: emailInp.value,
+                reservedSeats: []
+            }
+            reserveContainer.style.display = "flex"
+            beforeReserve.style.display = "none"
+            submitReservation.disabled=false
+            submit.disabled=true
+           
+        })
+        function selectedRender() {
+            for (let i = 0; i < seatsArr.length; ++i) {
+                if (seatsArr[i].booked) {
+                    seats[i].classList.add("selected");
+                }
+            }
+        }
+
+
+
+
+        seatsRender(6, 8)
+        let seats = document.querySelectorAll(".seat")
+        selectedRender()
+
+
+
+
+
+    </script>
+</body>
+
+</html>

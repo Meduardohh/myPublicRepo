@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        h1{
+            color:red
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1></h1>
+    <script>
+        // function divide(a,b){          
+        //     if(a===0||b===0){
+        //         throw new Error("Ne osszá nullával baszdmeg")
+        //     }
+        //     if(isNaN(b)||isNaN(a)){
+        //         throw new Error("Nem számokat adtál meg")
+        //     }
+        //     return a/b
+        // }
+
+        // try{
+        //    console.log( divide(0,2))
+        // }catch(e){
+        //     // alert(e.message)
+        //     console.log(e.message)
+        // }
+
+
+        // function myAlert(msg){
+        //     try{
+        //         myAlert(msg)
+        //     }catch(e){
+        //         console.log("error")
+        //     }finally{
+        //         console.log(msg)
+        //     }
+
+        // }
+        // window.alert=undefined
+        // myAlert("message")
+        // if(typeof asd[0]!=="string"||typeof asd[1]!=="string"||typeof asd[2]!=="string") throw new Error("Valamelyik nem string")
+        // function stringConcat(...asd){           
+        // for(let i=0;i<asd.length;++i){
+        //     if(typeof asd[i]!=="string")throw new Error("Valamelyik nem string")
+        // }
+        //     let joiner=asd[0]
+        //     asd.shift()
+
+
+        //     return `${asd.join(joiner)}`
+        // }
+        // try{
+        //     stringConcat("sd","asd",'string1','string2') 
+        // }catch(e){
+        //     console.log(e.message)
+        // }
+
+
+
+        // function factory(tray1,tray2){
+        //     if(!tray1||!tray2) throw new Error("Üres valamelyik")
+        //     // if(!tray2) throw new Error("Az első tray üres")
+        //     if(tray1===tray2)throw new Error("Mindkettő genyában ugyanaz van mit csinálsz baszod?")
+
+        //     return tray1+tray2
+        // }
+
+        // try{
+        //    console.log(factory("dildo","baggins"))
+        // }catch(e){
+        //     console.log(e.message)
+        // }
+
+        // function phoneValidate(num) {
+        //     if(num===null||num==="undefined")throw new Error("Nem számokat adtá meg")
+        //     if (num[0] !== "+") throw new Error("Nem + al kezdődik")
+        //     let [plus, ...theRest] = num
+        //     for (num of theRest) {
+        //         if (typeof num != "number" throw new Error("Nem számokat adtá meg")
+        //     }
+
+        //     return true
+        // }
+
+        // try {
+        //    console.log(phoneValidate('+3630134334'));
+        //     phoneValidate(null);
+        //     phoneValidate('342094994');
+        //     console.log(phoneValidate("+asd"))
+        // }catch(e){
+        //     console.log(e.message)
+        // }
+
+       
+        function writeInnerString(dom,str){
+            if(!document.body.contains(dom)) throw new Error("Nincs ilyen dom element")
+            else dom.innerText=str
+        }
+      
+      try{
+        writeInnerString(document.querySelector('div'), 'Hello world');
+        
+
+      }catch(e){
+        console.log(e)
+      }
+
+      
+    </script>
+</body>
+
+</html>

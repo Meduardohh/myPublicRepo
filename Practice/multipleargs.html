@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+
+
+    // function fullName(...args){
+    //     let string=""
+    //     for(n of args){
+    //         string+=n
+    //     }
+    //     return string;
+    // }
+
+    // function fullName2(){
+    //     let string=""
+    //     for(let i=0;i<arguments.length;++i){
+    //         string+=arguments[i]
+    //     }
+    //     return string;
+    // }
+
+    // console.log(fullName("apad ","anyad ","odamenjen ","idejojjon ","Vagy ","Bassza ","Meg ","Magát "))
+
+
+
+    // console.log(fullName2("apad ","anyad ","odamenjen ","idejojjon ","Vagy ","Bassza ","Meg ","Magát "))
+
+
+
+    // let fullName3=(...args)=>{
+    //     let string=""
+    //     for(n of args){
+    //         string+=n
+    //     }
+    //     return string;
+    // }
+
+    // console.log(fullName3("apad ","anyad ","odamenjen ","idejojjon ","Vagy ","Bassza ","Meg ","Magát "))
+
+
+    // function toCapital(...args){
+    //     let arr=[]
+    //     for(n of args){
+    //         arr.push(n.toUpperCase())
+    //     }
+    //     return arr
+    // }
+
+    // console.log(toCapital("capital","notCapital","asd","asdewrwe3"))
+
+
+    // function summarize(...args){
+    //     let sum=0
+    //     for(n of args){
+    //         sum+=n
+    //     }
+    //     return sum
+    // }
+
+    // console.log(summarize(1,2,4,5,123,23,434,5,435,43,))
+
+
+    // find
+    //     let arr=[1,2,3,4,5,6,78,8]
+
+    //    const found=arr.find((e)=>{
+    //        return e%2===0;
+    //     })
+    //     console.log(found)
+
+    //     function modulo(modul=2,...arr){
+    //        return arr.find((e)=>{
+    //            return e%modul===0;
+    //         })
+    //     }
+    //     console.log(modulo(1,...arr))
+
+
+
+    //filter
+
+    //   function IDfinder(wut,...obj){
+    //      return obj.filter((obj)=>{
+    //         if( typeof obj[wut]!=="undefined") return obj
+    //     })
+
+    //   }
+
+    //   let obj=[{
+    //       id:1,
+    //       asd:2,
+    //       ert:3
+
+    //   },
+    // {
+    //     id:2,
+    //       asd:2,
+    //       ert:3  
+    // }]
+
+
+    // function biggerThan(than,...arr){
+    //    return arr.filter((e)=>{
+    //        return e>than
+    //     })
+    // }
+    // console.log(biggerThan(2,...arr))
+
+    // console.log(IDfinder("asd",...obj))
+
+
+
+
+
+    // function shallowCopy(...arr){
+    //     let newArr=[]
+
+    //     let newArr=[...arr]
+    //     arr.forEach(e=>newArr.push(e))
+
+    //     return newArr
+    // }
+
+
+    // console.log(sarloKoppi(arr))
+
+
+
+    // let arr=[" 0asd ","asd","asdelkrwe  ","  asldkewr   "]
+
+
+    // console.log(arr.map((e)=>{
+    //    return e.trim(" ")
+    // }))
+
+
+    //   let cart = [
+    //   {
+    //     itemId: 1,
+    //     quantity: 2,
+    //     price: 120
+    //   },
+    //   {
+    //     itemId: 2,
+    //     quantity: 1,
+    //     price: 3
+    //   },
+    //   {
+    //     itemId: 3,
+    //     quantity: 3,
+    //     price: 43
+    //   },
+    // ]
+
+
+    // function summarizer(cart){
+    //     let obj={
+    //         price:0,
+    //         quantity:0
+    //     }
+    //    obj.price= cart.reduce((previous,current)=> { return previous+current.price},0)
+    //    obj.quantity= cart.reduce((previous,current)=>{return previous+current.quantity},0)
+
+    //     return obj
+
+    // }
+
+    // console.log(summarizer(cart))
+
+    //   let animals = ['dog', 'chicken', 'fish']
+    // let moreAnimals = ["bird",...animals,"cat"]
+
+    // console.log(moreAnimals);
+
+
+    // const hello = 'world';
+    // const arrowfw = (hello) => {
+
+
+    //   return console.log([...hello])
+    // }
+
+    // console.log(arrowfw(hello))
+
+
+    // /* ['w','o','r','l','d'] */
+
+
+    // const arr1 = [1, 2, 3, 4, 5]
+    // const arr2=[2,3,4,5,6767567,765]
+
+
+    // function merger(arr1,arr2){
+    //   if(!Array.isArray(arr1)||!Array.isArray(arr2)) return []
+    //   return[...arr1,...arr2]
+    // }
+
+    // console.log(merger(arr1,arr2))
+
+
+    // const obj1={
+    //   asd:"asew",
+    //   aew:12314
+
+    // }
+    // const obj2={
+    //   elerwe:123,
+    //   areél:true
+    // }
+
+    // function objMerger(obj1,obj2){
+    //   if(typeof obj1 !=="object"||typeof obj2!=="object")return {}
+    //   return {...obj1,...obj2}
+    // }
+
+    // console.log(objMerger(obj1,obj2))
+
+
+
+
+
+    //   function product(a, b, c, d, e) {  
+    //   var numbers = [a,b,c,d,e];
+
+    //   return numbers.reduce(function(acc, number) {
+    //     return acc * number;
+    //   }, 1)
+    // }
+
+    // const product = (...parms) => {
+    //   let numbers = [...parms]
+    //   return numbers.reduce((acc, number) => acc * number)
+    // }
+
+    // const product = (...parms) => {
+    //   let numbers = [parms[0],parms[1],parms[2],parms[3],parms[4],]
+    //   return numbers.reduce((acc, number) => acc * number)
+    // }
+
+    // console.log(product(1, 2, 3, 4, 5,10))
+
+
+    // let porpName=prompt("Mi legyen a prop name?")
+    // let propValue=prompt("Mi legyen az értéke?")
+
+    // let obj={
+    //   [porpName]:propValue
+    // }
+    // console.log(obj)
+
+//     const animalInfo = [
+//   'name', 'Bloki', 'age', 12, 'color', 'brown'
+// ]
+//     function toObj(arr){
+//       let obj={}
+//       for(let i=0;i<arr.length;++i){
+//         obj={...obj,[arr[i]]:arr[i+1]}
+//         if(i<arr.length-1)++i
+//       }
+//       return obj
+//     }
+//     console.log(toObj(animalInfo))
+
+
+
+
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+
+// // 1.
+// let [players1,players2]=game.players
+// console.log(players1)
+
+// //2.
+// let [gk,...fieldPlayers]=game.players[0]
+// console.log(gk, fieldPlayers)
+
+
+// //3.
+// let [...allPlayers]=[...game.players[0],...game.players[1]]
+// console.log(allPlayers)
+
+// //4.
+// let finalPlayers=[...players1,"faszominnyó","kulakígyó"]
+// console.log(finalPlayers)
+
+// //5.
+// let [team1,team2,x]=game.odds
+// console.log(team1,team2,x)
+// const {odds:{team1,x:draw,team2}}=game
+
+
+// //6
+// function printGoals(...player){
+//   for(n of player){
+//     console.log(`player:${n} all goals:${player.length}`)
+//   }
+// }
+
+// console.log(printGoals(...game.scored) )
+
+let gps = [24.232, 43.222];
+let [x,y]=gps;
+console.log(x,y)
+
+
+// var arr = [1, 2];
+// var temp = arr[0];
+// arr[0] = arr[1];
+// arr[1] = temp;
+
+let arr=[1,2];
+[arr[1],arr[0]]=arr;
+console.log(arr)
+
+
+let ages=[55,36,48,100,101]
+let min=Math.min(...ages)
+let [faszom]=ages.sort((a,b)=>a-b)
+
+let [,min2,]=ages
+console.log("faszom",faszom)
+console.log(min,min2)
+
+
+
+let asd=['Tibor', 'Eszter', 'David', 'Adám','Aladar']
+
+let [first,second,third,...others]=asd
+console.log(first,second,third,others)
+
+let arfv=(arr)=>{
+  let [first,second,third,...others]=arr;
+
+  return {
+    first,
+    second,
+    third,
+    others
+  }
+}
+console.log(arfv(asd))
+
+let arrfv=(first,second,third,...others)=>({first,second,third,others});
+
+console.log(arrfv(...asd))
+
+const options = {
+  visible: true,
+  display: 'block',
+}
+let {visible=false,display}=options
+
+console.log(visible,display)
+
+
+
+const user = {
+  firstName: 'Elemér',
+  lastName: 'Nagy',
+}
+
+let highlight=({firstName,lastName})=>(`Kedves <strong>${firstName,lastName}</strong>!`)
+
+console.log(highlight(user))
+  </script>
+
+</body>
+
+</html>
