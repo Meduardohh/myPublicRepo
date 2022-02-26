@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+let arr=[1,2,3,4]
+        const arrayIIFE=(function iifeModul(arr){
+
+            return{
+            add:function (item){
+                arr.push(item)
+            },
+            remove:function (item){
+                for(let i=0;i<arr.length;++i){
+                    if(item===arr[i]){
+                        arr.splice(i,1)
+                    }
+                }
+            },
+            get:function (){
+                console.log(arr)
+            }
+        }
+        })(arr)
+
+        let a="*a*"
+        console.log(a.toUpperCase())
+
+        arrayIIFE.add(5)
+        arrayIIFE.remove(2)
+        arrayIIFE.get()
+
+    </script>
+</body>
+</html>

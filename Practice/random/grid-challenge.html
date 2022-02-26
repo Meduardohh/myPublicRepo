@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+            /* grid-template-rows:minmax(0px,500px) minmax(0px,500px) ; */
+            grid-template-rows: repeat(2, minmax(0px, auto));
+            height: 100vh;
+            overflow:visible;
+        }
+
+        #one {
+            grid-row: 1/2;
+            grid-column: 2/3;
+            min-height: 200px;
+            align-self: end;
+            /* overflow: visible; */
+            /* width:200px; */
+
+
+        }
+
+        #two {
+            grid-row: 1/2;
+            grid-column: 3/4;
+            min-height: 100%;
+            max-height: 0;
+
+            background-color: yellowgreen;
+            align-self: end;
+
+        }
+
+        #three {
+            grid-row: 1/2;
+            grid-column: 4/5;
+            height: 200px;
+            align-self: end;
+            /* overflow: visible; */
+        }
+
+        #four {
+            grid-row: 1/2;
+            grid-column: 5/6;
+            height: 100%;
+
+            background-color: yellowgreen;
+            align-self: end;
+            overflow: hidden;
+        }
+
+        #five {
+            grid-row: 1/2;
+            grid-column: 6/7;
+            height: 200px;
+            align-self: end;
+            /* overflow: visible; */
+
+        }
+
+        #six {
+            grid-row: 1/2;
+            grid-column: 7/8;
+            min-height: 100%;
+
+            background-color: yellowgreen;
+            align-self: end;
+            overflow: hidden;
+
+        }
+
+        #seven {
+            grid-row: 2/3;
+            grid-column: 3/4;
+            min-height: 200px;
+            /* overflow: visible; */
+
+        }
+
+        #eight {
+            grid-row: 2/3;
+            grid-column: 2/3;
+            min-height: 100%;
+            /* max-height: 100%; */
+            overflow: hidden;
+            background-color: tomato;
+
+        }
+
+        #nine {
+            grid-row: 2/3;
+            grid-column: 5/6;
+            min-height: 200px;
+            /* overflow: visible; */
+
+        }
+
+        #ten {
+            grid-row: 2/3;
+            grid-column: 4/5;
+            min-height: 100%;
+            overflow: hidden;
+            background-color: tomato;
+
+        }
+
+        #eleven {
+            grid-row: 2/3;
+            grid-column: 7/8;
+            min-height: 200px;
+            /* overflow: visible; */
+
+
+        }
+
+        #twelve {
+            grid-row: 2/3;
+            grid-column: 6/7;
+            min-height: 100%;
+            background-color: tomato;
+            overflow: hidden;
+
+        }
+
+        .upImage {
+            border-top-left-radius: 25px;
+        }
+
+        .downImage {
+            border-bottom-right-radius: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div id="one" class="Column"><img class="upImage" src="https://placedog.net/200/200"> </div>
+        <div id="two" class="Column">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+        </div>
+        <div id="three" class="Column"><img class="upImage" src="https://placedog.net/200/200"></div>
+        <div id="four" class="Column">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+        </div>
+        <div id="five" class="Column"><img class="upImage" src="https://placedog.net/200/200"></div>
+        <div id="six" class="Column">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+        </div>
+
+        <div id="seven" class="Column"><img class="downImage" src="https://placedog.net/200/200"> </div>
+        <div id="eight" class="Column">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+        </div>
+        <div id="nine" class="Column"><img class="downImage" src="https://placedog.net/200/200"></div>
+        <div id="ten" class="Column">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+        </div>
+        <div id="eleven" class="Column"><img class="downImage" src="https://placedog.net/200/200"></div>
+        <div id="twelve" class="Column">
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley</p>
+        </div>
+
+    </div>
+</body>
+
+</html>

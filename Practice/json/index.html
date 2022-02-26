@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+         body{
+             background-color: grey;
+         }
+     </style>
+</head>
+<body>
+    <form id="menu" enctype="application/json">
+        <input id="user" placeholder="user" ><br>
+        <input id="email" placeholder="email" ><br>
+        <button id="submit">Submit</button>
+    </form>
+    <div id="container"></div>
+    
+    
+
+    <script>
+        const user=document.querySelector("#user")
+        const email=document.querySelector("#email")
+        const submit=document.querySelector("#submit")
+        const menu=document.querySelector("#menu")
+
+        const request=new XMLHttpRequest()
+        const container=document.querySelector("#container")
+
+        request.open ("GET","http://localhost:3000/users")
+        request.send()
+        let id=0;
+        request.addEventListener("load",()=>{
+            const data=JSON.parse(request.responseText)
+            for(let item of data){
+                id++
+                container.innerHTML+=`<div>id:${item.id}<br>Név:${item.name}<br>email:${item.email}</div><br>`
+            }
+            console.log(data)
+            
+
+        })
+
+        submit.addEventListener("click",(e)=>{
+            e.preventDefault();
+            let obj={               
+                user:user.value,
+                email:email.value
+            }
+            container.innerHTML+=`<div>id:${++id}<br>Név:${obj.user}<br>email:${obj.email}</div><br>`
+            request.open("POST","http://localhost:3000/users")
+            request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+
+            request.send(JSON.stringify(obj))
+        })
+        
+      
+        
+
+
+    </script>
+</body>
+</html>

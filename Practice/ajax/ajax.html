@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        title{
+            display:inline-block;
+            font-weight: bolder;
+            width:100vw;
+            padding:15px;
+            font-size: 2rem;
+            margin-top:20px;
+            
+        }
+        body{
+            display:flex;
+        }
+        content{
+            display:inline-block;
+            font-size:1rem;
+            width:600px;
+        }
+
+    </style>
+    <script>
+        window.onload=()=>{
+        const container=document.querySelector("#container")        
+        const request=new XMLHttpRequest()
+            request.open("GET","https://eloquent-leakey-dcde05.netlify.app/xml_pelda_02.xml")
+            request.send()
+
+            request.addEventListener("load",()=>{
+                const articles=request.responseXML.querySelectorAll("article")
+                console.log(articles)
+                for(let item of articles){ 
+                    let newItem=``
+                    container.append(item)
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        
+      
+    </script>
+</body>
+</html>

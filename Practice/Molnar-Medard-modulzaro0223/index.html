@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .container {
+        display: flex;
+        border: solid black 2px;
+        border-radius: 5%;
+        height: 500px;
+        width: 900px;
+      }
+      input {
+        margin: 20px;
+      }
+      .left {
+        margin: 10px;
+        padding: 20px;
+        width: 400px;
+      }
+      .right {
+        margin: 10px;
+        padding: 20px;
+        width: 400px;
+      }
+      button {
+        margin: 10px;
+        margin-left: 20px;
+        width: 100px;
+      }
+      .correct {
+        color: black;
+      }
+      .wrong {
+        color: black;
+      }
+      li {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <input id="question" type="text" placeholder="Kérdés" /><br />
+        <input id="answer1" type="text" placeholder="Válasz 1" /><br />
+        <input id="answer2" type="text" placeholder="Válasz 2" /><br />
+        <input id="answer3" type="text" placeholder="Válasz 3" /><br />
+        <input
+          id="correctAnswer"
+          type="text"
+          placeholder="Jó válasz száma"
+        /><br />
+        <button id="saveButt">Mentés</button><br />
+        <button id="retry">Reload</button>
+      </div>
+      <div class="right">
+        <h1 id="questionText"></h1>
+        <ul id="answerList">
+          <li class="answersList"></li>
+          <li class="answersList"></li>
+          <li class="answersList"></li>
+        </ul>
+        <br />
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

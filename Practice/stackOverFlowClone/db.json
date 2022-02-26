@@ -1,0 +1,33 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "title": "Miert jo a Promise?",
+      "question": "Balbaba"
+    },
+    {
+      "question": "dsad",
+      "id": 2
+    },
+    {
+      "question": "dsasda",
+      "id": 3
+    },
+    {
+      "question": "sadsa",
+      "id": 4
+    }
+  ],
+  "answers": [
+    {
+      "id": 1,
+      "question_id": 1,
+      "answer": "Csak.."
+    },
+    {
+      "id": 2,
+      "question_id": 1,
+      "answer": "Mert de es pont"
+    }
+  ]
+}

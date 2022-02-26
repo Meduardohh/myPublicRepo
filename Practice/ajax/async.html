@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #myProgress {
+            width: 100%;
+            background-color: grey;
+        }
+
+        #myBar {
+            width: 1%;
+            height: 30px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <button id="button">submit</button> -->
+
+    <div id="myProgress">
+        <div id="myBar"></div>
+    </div>
+    <button id="loading">Start loading bar</button>
+
+    <input id="time" type="number" placeholder="másodperc">
+    <input id="text" type="text" placeholder="Szöveg">
+    <button id="start">start</button>
+
+    <script>
+        const subButt = document.querySelector("#button")
+        const textInput = document.querySelector("#text")
+        const secInput = document.querySelector("#time")
+        const start = document.querySelector("#start")
+        const loadingButt = document.querySelector("#loading")
+        const loadingBar = document.querySelector("#myBar")
+        // 1
+        // setTimeout(()=>{
+        //     alert("Szevasz baszdmeg")
+        // },5*1000)
+
+        // 2
+        let count = 0;
+        // setInterval(()=>{
+        //     console.log(++count)
+        // },5*1000)
+
+
+
+
+        // let interval = 2
+
+        // setInterval(() => {
+        //     console.log(++count)
+        //     interval = interval + 2
+        // }, interval * 1000)
+
+
+        //3.
+
+        // let time = 2
+        // let timeout = setTimeout(function write() {
+        //     console.log(++count)
+        //     time += 2
+        //     timeout = setTimeout(write, time * 1000)
+        // }, time * 1000)
+
+        //4.
+        //     subButt.disabled=true
+        //         let time=1
+        //   let timeout=setTimeout(function enable(){
+
+        //       console.log(++count)
+        //       if(count>=5){
+        //         subButt.disabled=false
+        //       }
+        //       timeout=setTimeout(enable,time*1000)
+        //   },time++*1000)
+
+
+        start.addEventListener("click", () => {
+
+            let timeout = setTimeout(function write() {
+                console.log(textInput.value)
+
+                timeout = setTimeout(write, secInput.value * 1000)
+            }, secInput.value * 1000)
+
+        })
+        
+        loadingButt.addEventListener("click", () => {
+            let progress = 0
+            setInterval(() => {
+                if (progress >= 100) {
+                    clearInterval();
+                }
+                else {
+                    loadingBar.style.width = `${progress+=0.07}%`
+                }
+
+            }, 1)
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

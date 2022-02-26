@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Kiss Jolan",
+      "email": "teszt@tesztmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Nagy Elemer",
+      "email": "teszt2@tesztmail.com"
+    },
+    {
+      "user": "asd",
+      "email": "asdasd",
+      "id": 3
+    },
+    {
+      "user": "asd",
+      "email": "asdasdas",
+      "id": 4
+    },
+    {
+      "user": "asd",
+      "email": "asdasdsad",
+      "id": 5
+    },
+    {
+      "user": "asd",
+      "email": "asdasdasd",
+      "id": 6
+    }
+  ]
+}
