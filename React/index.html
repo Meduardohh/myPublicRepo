@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <link rel="stylesheet" href="./src/components/style.css" />
+  </head>
+  <body>
+    <div class="container"></div>
+    <script>
+      //   ReactDOM.render(ListaElements.renderList(),container)
+
+      // const container = document.querySelector(".container");
+      // const reactP = React.createElement(
+      //   "p",
+      //   {
+      //     style: {
+      //       color: "blue",
+      //     },
+      //     id: "id",
+      //   },
+      //   "Valami szoveg"
+      // );
+
+      // const reactLI = React.createElement("li", {}, "lista genyo");
+      // const reactUL = React.createElement("ul", { children: reactLI });
+
+      // //  ReactDOM.render(reactLI, reactUL);
+      // ReactDOM.render(reactUL, container);
+
+      //   ReactDOM.render(reactP, container);
+
+      const container = document.querySelector(".container");
+      class ListaElements extends React.Component {
+        render() {
+          const reactLI = React.createElement("li", {}, "string");
+          return React.createElement("ul", { children: reactLI });
+        }
+      }
+      const lista = React.createElement(ListaElements);
+
+      ReactDOM.render(lista, container);
+    </script>
+  </body>
+</html>

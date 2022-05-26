@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+  align-self: center;
+  vertical-align: middle;
+}
+
+#root {
+  display: flex;
+  width: 300px;
+  border: 5px solid blue;
+  flex-direction: column;
+  padding: 30px;
+}
+body {
+  margin: 30%;
+  background-color: black;
+  color: wheat;
+}
+
+.toDoItem {
+  border-bottom: 1px solid white;
+}
+
+.done {
+  text-decoration: line-through;
+  color: orange;
+}

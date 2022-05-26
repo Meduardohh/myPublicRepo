@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+
+    <script type="text/babel">
+      const container = document.querySelector("#container");
+      const article = (
+        <article>
+          <h1>Title</h1>
+          <img src="https://placedog.net/500" />
+          <button>Louie Button</button>
+        </article>
+      );
+
+      const paragraphs = (
+        <div>
+          <p>para 1</p>
+          <p>para 2</p>
+          <p>para 3</p>
+          <p>para 4</p>
+          <p>para 5</p>
+        </div>
+      );
+
+      ReactDOM.render(paragraphs, container);
+      //   ReactDOM.render(article, container);
+
+      const a = 5;
+      const b = 6;
+
+      const multiple = <div>{a * b}</div>;
+      ReactDOM.render(multiple, container);
+
+      const arr = [1, 2, 3, 4, 5, 6, 7, 7, 89];
+
+      const jsxArr = [];
+      for (let i = 0; i < arr.length; ++i) {
+        jsxArr.push(<div key={i}>{arr[i]}</div>);
+      }
+      ReactDOM.render(jsxArr, container);
+    </script>
+  </body>
+</html>
